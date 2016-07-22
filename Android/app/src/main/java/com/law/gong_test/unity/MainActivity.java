@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.google.gson.JsonObject;
 import com.law.gong_test.R;
 import com.law.gong_test.act.FriendActivity;
+import com.law.gong_test.act.PresentActivity;
 import com.law.gong_test.async.MyAsyncCallbackSimple;
 import com.law.gong_test.async.MyAsyncExecutor;
 import com.law.gong_test.common.Common;
@@ -163,7 +164,6 @@ public class MainActivity extends UnityPlayerActivity {
 //                    Toast.makeText(getApplicationContext(), "3, addFriend", Toast.LENGTH_SHORT).show();
                     new MyAsyncExecutor<String>((Activity)context).setCallable(friendCall).setCallback(friendCallBack).execute("true");
 
-
                     break;
                 case 4:
 //                    Toast.makeText(getApplicationContext(), "4 Quit", Toast.LENGTH_SHORT).show();
@@ -175,6 +175,7 @@ public class MainActivity extends UnityPlayerActivity {
                     break;
                 case 6:
 //                    Toast.makeText(getApplicationContext(), "6 present", Toast.LENGTH_SHORT).show();
+                    new MyAsyncExecutor<String>((Activity)context).setCallable(presentCall).setCallback(presentCallBack).execute("true");
                     break;
                 default:
                     break;
@@ -268,7 +269,34 @@ public class MainActivity extends UnityPlayerActivity {
     };
 
 
+    Callable<String> presentCall = new Callable<String>() {
+        @Override
+        public String call() throws Exception {
+            Common common = Common.getInstance();
 
+            LinkedHashMap<String, String> hashMap = new LinkedHashMap<>();
+            hashMap.put("kind", "friend");
+
+            return common.connect(Common.MAIN_URL, hashMap);
+        }
+    };
+
+    MyAsyncCallbackSimple<String> presentCallBack = new MyAsyncCallbackSimple<String>(){
+        @Override
+        public void onResult(String result) {
+            if(result.equals("fail")){
+                Toast.makeText(getApplicationContext(), "fail", Toast.LENGTH_SHORT).show();
+                Log.e("callbackSimple", "connect fail");
+                return;
+            } else{
+//                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, PresentActivity.class);
+                intent.putExtra("list", result);
+                startActivity(intent);
+
+            }
+        }
+    };
 
 
 

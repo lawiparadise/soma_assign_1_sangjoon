@@ -35,8 +35,13 @@ public class PresentListAdapter extends BaseAdapter {
     String friendId;
     String[] myFriendList;
     Context cont;
+
+    //
+    DTOAll myDTO;
     //
     private ArrayList<DTOAll> list;
+
+    private ArrayList<DTOAll> friendLIst;
 
     public PresentListAdapter() {
         list = new ArrayList<>();
@@ -53,6 +58,7 @@ public class PresentListAdapter extends BaseAdapter {
         for (int i = 0; i < list.size(); i++) {
 //            Log.e(TAG, "MY : "+list.get(i).getFriend());
             if (MainActivity.id.equals(list.get(i).getId())) {
+                myDTO = list.get(i);
                 myFriendList = list.get(i).getFriend().split(",");
                 Log.e(TAG,"MY : for : "+myFriendList.length);
                 //별로 좋은 방법은 아님 안됨.
@@ -68,6 +74,14 @@ public class PresentListAdapter extends BaseAdapter {
                 Log.e(TAG, "MY : else");
 //                myFriendList = null;
             }
+
+        }
+
+        friendLIst = new ArrayList<>();
+        for(int i=0 ; i<myFriendList.length ; i++){
+            DTOAll dtoAll = new DTOAll();
+            dtoAll.setId(myFriendList[i]);
+            friendLIst.add(dtoAll);
         }
     }
 
@@ -96,7 +110,7 @@ public class PresentListAdapter extends BaseAdapter {
         ViewHolder viewHolder = new ViewHolder();
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.list_friend_item, parent, false);
+            convertView = inflater.inflate(R.layout.list_present_item, parent, false);
 
             viewHolder.layoutBack = (RelativeLayout) convertView.findViewById(R.id.layout_list_back_apart);
             viewHolder.txtId = (TextView) convertView.findViewById(R.id.txt_id);
@@ -114,37 +128,25 @@ public class PresentListAdapter extends BaseAdapter {
             viewHolder.btnAdd.setText("나");
 //            Log.e(TAG, "MY : " + position);
         } else {
-            for(int i=0 ; i<myFriendList.length ; i++){
-                if(myFriendList[i].equals(list.get(position).getId())){
-                    viewHolder.aBoolean = false;
-                    break;
-                } else{
-                    viewHolder.aBoolean = true;
-                }
-            }
-
-            if (viewHolder.aBoolean) {
-                viewHolder.btnAdd.setText("친구 추가");
-            } else {
-                viewHolder.btnAdd.setText("친구");
-            }
+            viewHolder.btnAdd.setText("선물하기");
         }
 
-        final boolean temp = viewHolder.aBoolean;
+
         final Button button = viewHolder.btnAdd;
         viewHolder.btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    if(temp){
-                        Log.e(TAG,"MY : pos"+pos);
-                        if (!MainActivity.id.equals(list.get(pos).getId())) {
-                            button.setText("친구");
-                            friendId = list.get(pos).getId();
-                            new MyAsyncExecutor<String>((Activity)context).setCallable(first).setCallback(firstBack).execute("true");
-                        }
-                    }else{
-                        Log.e(TAG,"MY : pos"+pos);
+                if(Integer.parseInt(myDTO.getMoney()) > 1000){
+                    Log.e(TAG,"MY : pos"+pos);
+                    if (!MainActivity.id.equals(list.get(pos).getId())) {
+                        friendId = list.get(pos).getId();
+                        new MyAsyncExecutor<String>((Activity)context).setCallable(first).setCallback(firstBack).execute("true");
                     }
+                } else {
+                    Log.e(TAG,"MY : pos"+pos);
+                    Toast.makeText(context, "돈이 없습니다.", Toast.LENGTH_SHORT).show();
+                }
+
 //                Intent i = new Intent(v.getContext(), CaseDetailActivity.class);
 //                i.putExtra("case_idx", list.get(pos).getCase_idx());
 //                context.startActivity(i);
@@ -168,7 +170,7 @@ public class PresentListAdapter extends BaseAdapter {
             LinkedHashMap<String, String> hashMap = new LinkedHashMap<>();
 
             JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("kind", "addFriend");
+            jsonObject.addProperty("kind", "present");
             jsonObject.addProperty("id", MainActivity.id);
             jsonObject.addProperty("friend",friendId);
 
@@ -184,7 +186,7 @@ public class PresentListAdapter extends BaseAdapter {
                 Log.e("callbackSimple", "connect fail");
                 return;
             } else {
-                Toast.makeText(cont, "친구 추가 되었습니다.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(cont, "선물 완료 되었습니다.", Toast.LENGTH_SHORT).show();
                 return;
             }
         }

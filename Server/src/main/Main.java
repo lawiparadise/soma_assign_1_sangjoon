@@ -116,6 +116,7 @@ public class Main extends HttpServlet {
 				dto.setName(dao.getModelList().get(i).getName());
 				dto.setImg(dao.getModelList().get(i).getImg());
 				dto.setFriend(dao.getModelList().get(i).getFriend());
+				dto.setMoney(dao.getModelList().get(i).getMoney());
 				list.add(dto);				
 			}
 			
@@ -275,6 +276,29 @@ public class Main extends HttpServlet {
 					String temp = dao.getModelList().get(i).getFriend();
 					dao.dbConn();
 					dao.update(col2, DAOAll.column11, temp+","+col11);
+					dao.close();
+
+					break;
+				}
+			}
+		} else if (String.valueOf(kind).equals("present")) {
+			String col2 = dto.getId();
+			String col11 = dto.getFriend();
+			
+			String temp = "";
+			
+			for (int i = 0; i < dao.getModelList().size(); i++) {
+				if ((dao.getModelList().get(i).getId()).equals(col11)) {
+					temp = dao.getModelList().get(i).getItem();
+				}
+				if ((dao.getModelList().get(i).getId()).equals(col2)) {
+					
+					String tempMon = dao.getModelList().get(i).getMoney();
+					int mon = Integer.parseInt(tempMon);
+					mon-=1000;
+					dao.dbConn();
+					dao.update(col2, DAOAll.column13, Integer.toString(mon) );
+					dao.update(col11, DAOAll.column12, temp+",star");
 					dao.close();
 
 					break;
