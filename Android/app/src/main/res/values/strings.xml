@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyCh6GameMobile</string>
+    <string name="kakao_app_key">2360eead61cca183a2b4712f693a6ffe</string>
+    <string name="kakao_scheme">kakao2360eead61cca183a2b4712f693a6ffe</string>
+    <string name="kakaolink_host">kakaolink</string>
+
+
+</resources>
