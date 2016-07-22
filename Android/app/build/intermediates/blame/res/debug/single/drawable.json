@@ -1,11 +1,11 @@
 [
     {
-        "merged": "D:\\temp\\MyCh6GameMobile12\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_colored_material.xml",
-        "source": "D:\\temp\\MyCh6GameMobile12\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_btn_colored_material.xml"
-    },
-    {
         "merged": "D:\\temp\\MyCh6GameMobile12\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_switch_thumb_material.xml",
         "source": "D:\\temp\\MyCh6GameMobile12\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_switch_thumb_material.xml"
+    },
+    {
+        "merged": "D:\\temp\\MyCh6GameMobile12\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_colored_material.xml",
+        "source": "D:\\temp\\MyCh6GameMobile12\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_btn_colored_material.xml"
     },
     {
         "merged": "D:\\temp\\MyCh6GameMobile12\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\kakao_profile_boxbg.9.png",
@@ -14,6 +14,10 @@
     {
         "merged": "D:\\temp\\MyCh6GameMobile12\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_borderless_material.xml",
         "source": "D:\\temp\\MyCh6GameMobile12\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_btn_borderless_material.xml"
+    },
+    {
+        "merged": "D:\\temp\\MyCh6GameMobile12\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_signin_btn_text_light.xml",
+        "source": "D:\\temp\\MyCh6GameMobile12\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.1.0\\res\\drawable\\common_signin_btn_text_light.xml"
     },
     {
         "merged": "D:\\temp\\MyCh6GameMobile12\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\kakao_account_button_background.xml",
@@ -26,6 +30,10 @@
     {
         "merged": "D:\\temp\\MyCh6GameMobile12\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\app_icon.png",
         "source": "D:\\temp\\MyCh6GameMobile12\\app\\src\\main\\res\\drawable\\app_icon.png"
+    },
+    {
+        "merged": "D:\\temp\\MyCh6GameMobile12\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_signin_btn_text_dark.xml",
+        "source": "D:\\temp\\MyCh6GameMobile12\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.1.0\\res\\drawable\\common_signin_btn_text_dark.xml"
     },
     {
         "merged": "D:\\temp\\MyCh6GameMobile12\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\kakao_account_logo.png",
@@ -88,6 +96,10 @@
         "source": "D:\\temp\\MyCh6GameMobile12\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_edit_text_material.xml"
     },
     {
+        "merged": "D:\\temp\\MyCh6GameMobile12\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_signin_btn_icon_light.xml",
+        "source": "D:\\temp\\MyCh6GameMobile12\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.1.0\\res\\drawable\\common_signin_btn_icon_light.xml"
+    },
+    {
         "merged": "D:\\temp\\MyCh6GameMobile12\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\kakao_editable_profile.png",
         "source": "D:\\temp\\MyCh6GameMobile12\\app\\build\\intermediates\\exploded-aar\\com.kakao.sdk\\util\\1.1.20\\res\\drawable\\kakao_editable_profile.png"
     },
@@ -134,5 +146,9 @@
     {
         "merged": "D:\\temp\\MyCh6GameMobile12\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_top_material.xml",
         "source": "D:\\temp\\MyCh6GameMobile12\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_cab_background_top_material.xml"
+    },
+    {
+        "merged": "D:\\temp\\MyCh6GameMobile12\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_signin_btn_icon_dark.xml",
+        "source": "D:\\temp\\MyCh6GameMobile12\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.1.0\\res\\drawable\\common_signin_btn_icon_dark.xml"
     }
 ]

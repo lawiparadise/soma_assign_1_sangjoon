@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +13,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.android.gcm.server.Message;
+import com.google.android.gcm.server.MulticastResult;
+import com.google.android.gcm.server.Result;
+import com.google.android.gcm.server.Sender;
 import com.google.gson.Gson;
 
 import controll.DAOAll;
@@ -104,6 +109,8 @@ public class Main extends HttpServlet {
 			}
 			
 		} else if (String.valueOf(kind).equals("friend")) {
+			
+			
 			int len = dao.getModelList().size();
 			Gson gson = new Gson();
 //			String[] list = new String[len];
@@ -117,6 +124,7 @@ public class Main extends HttpServlet {
 				dto.setImg(dao.getModelList().get(i).getImg());
 				dto.setFriend(dao.getModelList().get(i).getFriend());
 				dto.setMoney(dao.getModelList().get(i).getMoney());
+				dto.setReg_id(dao.getModelList().get(i).getReg_id());
 				list.add(dto);				
 			}
 			
@@ -194,6 +202,7 @@ public class Main extends HttpServlet {
 				String col4 = dto.getImg();
 				// String col3 = "상준";
 				String col5 = dto.getFirst_install_time();
+				String col14 = dto.getReg_id();
 				// System.out.println("name : " + col3 + ", ins : " + col4);
 				dao.dbConn();
 				dao.insert(col2, col3, col4, col5);
@@ -201,6 +210,7 @@ public class Main extends HttpServlet {
 				dao.update(col2, "friend", "a,b");
 				dao.update(col2, "item", "null");
 				dao.update(col2, "money", "10000");
+				dao.update(col2, "reg_id", col14);
 				dao.close();
 			}
 
@@ -270,25 +280,46 @@ public class Main extends HttpServlet {
 		} else if (String.valueOf(kind).equals("addFriend")) {
 			String col2 = dto.getId();
 			String col11 = dto.getFriend();
-
+			
+			String name = "";
 			for (int i = 0; i < dao.getModelList().size(); i++) {
+				if ((dao.getModelList().get(i).getId()).equals(col2)) {
+					name = dao.getModelList().get(i).getName();
+					break;
+				}
+			}
+		
+			for (int i = 0; i < dao.getModelList().size(); i++) {
+				if ((dao.getModelList().get(i).getId()).equals(col11)) {
+					push(dao.getModelList().get(i).getReg_id(), "addFriend", name);
+					System.out.println("push"+dao.getModelList().get(i).getReg_id());
+				}
 				if ((dao.getModelList().get(i).getId()).equals(col2)) {
 					String temp = dao.getModelList().get(i).getFriend();
 					dao.dbConn();
 					dao.update(col2, DAOAll.column11, temp+","+col11);
 					dao.close();
-
 					break;
 				}
+				
 			}
 		} else if (String.valueOf(kind).equals("present")) {
 			String col2 = dto.getId();
 			String col11 = dto.getFriend();
 			
+			String name = "";
+			for (int i = 0; i < dao.getModelList().size(); i++) {
+				if ((dao.getModelList().get(i).getId()).equals(col2)) {
+					name = dao.getModelList().get(i).getName();
+					break;
+				}
+			}
+			
 			String temp = "";
 			
 			for (int i = 0; i < dao.getModelList().size(); i++) {
 				if ((dao.getModelList().get(i).getId()).equals(col11)) {
+					push(dao.getModelList().get(i).getReg_id(), "present", name);
 					temp = dao.getModelList().get(i).getItem();
 				}
 				if ((dao.getModelList().get(i).getId()).equals(col2)) {
@@ -310,6 +341,40 @@ public class Main extends HttpServlet {
 		 * for(int i=0 ; i<dao.getModelList().size() ; i++){
 		 * System.out.println(dao.getModelList().get(i).getName()); }
 		 */
+
+	}
+	
+	public void push(String regId, String con, String name){
+		Sender sender = new Sender("AIzaSyAPFUWbqHsU1dC08JCGET-tjxxGL-8paCQ"); // 서버 API Key 입력
+//		String regId = "ccqEEqmNi5A:APA91bFNNgvpE3IFxeqfOa3BZ-XDOjZqEe3mSUO3aEEG-HaKEb-wNHxuVC8_EqSeXuvhA7kqE94xj5FN8sEwoc5_1SDSWfKpmIzdBq_Ocw4kk4jFHp2s60yek3WfYCYbfn7LsER58RS4";
+		Message.Builder builder = new Message.Builder();
+		
+		if(String.valueOf(con).equals("addFriend")){
+			builder.addData("title", "친구 추가");
+			builder.addData("message", name+"님이 당신을 친구로 추가했습니다.");
+		} else if(String.valueOf(con).equals("present")){
+			builder.addData("title", "선물");
+			builder.addData("message", name+"님이 당신에게 별을 보냈습니다.");
+		}
+
+		Message message = builder.build();
+		
+		List<String> list = new ArrayList<String>();
+		list.add(regId);
+		MulticastResult multiResult;
+
+		try {
+			multiResult = sender.send(message, list, 5);
+			if (multiResult != null) {
+				List<Result> resultList = multiResult.getResults();
+				for (Result result : resultList) {
+					System.out.println(result.getMessageId());
+				}
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 

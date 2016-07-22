@@ -20,6 +20,7 @@ import com.law.gong_test.act.PresentActivity;
 import com.law.gong_test.async.MyAsyncCallbackSimple;
 import com.law.gong_test.async.MyAsyncExecutor;
 import com.law.gong_test.common.Common;
+import com.law.gong_test.gcm.RegistrationIntentService;
 import com.law.gong_test.kakao.GlobalApplication;
 import com.unity3d.player.UnityPlayer;
 
@@ -65,8 +66,8 @@ public class MainActivity extends UnityPlayerActivity {
         name = intent.getStringExtra("Nickname");
         id = intent.getStringExtra("id");
 
-        name = "수미";
-        id = "20";
+        name = "종현";
+        id = "22";
         img = intent.getStringExtra("img");
 
         Toast.makeText(getApplicationContext(), "Nick : " + name, Toast.LENGTH_SHORT).show();
@@ -98,6 +99,7 @@ public class MainActivity extends UnityPlayerActivity {
             jsonObject.addProperty("id", id);
             jsonObject.addProperty("name", name);
             jsonObject.addProperty("img", img);
+            jsonObject.addProperty("reg_id", RegistrationIntentService.token);
             jsonObject.addProperty("first_install_time",first_install_time);
 
             return common.connect(Common.MAIN_URL, jsonObject);

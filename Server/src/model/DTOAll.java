@@ -22,14 +22,8 @@ public class DTOAll implements Serializable{
 	String friend;
 	String item;
 	String money;
+	String reg_id;
 	
-	
-	public String getImg() {
-		return img;
-	}
-	public void setImg(String img) {
-		this.img = img;
-	}
 	public String getKind() {
 		return kind;
 	}
@@ -48,12 +42,17 @@ public class DTOAll implements Serializable{
 	public void setId(String id) {
 		this.id = id;
 	}
-	
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
 	}
 	public String getFirst_install_time() {
 		return first_install_time;
@@ -109,6 +108,14 @@ public class DTOAll implements Serializable{
 	public void setMoney(String money) {
 		this.money = money;
 	}
+	public String getReg_id() {
+		return reg_id;
+	}
+	public void setReg_id(String reg_id) {
+		this.reg_id = reg_id;
+	}
+	
+
 	
 
 	

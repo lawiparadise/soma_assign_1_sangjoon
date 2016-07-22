@@ -29,7 +29,7 @@ import java.util.concurrent.Callable;
 
 public class PresentListAdapter extends BaseAdapter {
 
-    public static final String TAG = "FriendListAdapter";
+    public static final String TAG = "PresentListAdapter";
 
     //
     String friendId;
@@ -129,30 +129,32 @@ public class PresentListAdapter extends BaseAdapter {
 //            Log.e(TAG, "MY : " + position);
         } else {
             viewHolder.btnAdd.setText("선물하기");
-        }
 
-
-        final Button button = viewHolder.btnAdd;
-        viewHolder.btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(Integer.parseInt(myDTO.getMoney()) > 1000){
-                    Log.e(TAG,"MY : pos"+pos);
-                    if (!MainActivity.id.equals(list.get(pos).getId())) {
-                        friendId = list.get(pos).getId();
-                        new MyAsyncExecutor<String>((Activity)context).setCallable(first).setCallback(firstBack).execute("true");
+            final Button button = viewHolder.btnAdd;
+            viewHolder.btnAdd.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (Integer.parseInt(myDTO.getMoney()) > 1000) {
+                        Log.e(TAG, "MY : pos" + pos);
+                        if (!MainActivity.id.equals(list.get(pos).getId())) {
+                            friendId = list.get(pos).getId();
+                            new MyAsyncExecutor<String>((Activity) context).setCallable(first).setCallback(firstBack).execute("true");
+                        }
+                    } else {
+                        Log.e(TAG, "MY : pos" + pos);
+                        Toast.makeText(context, "돈이 없습니다.", Toast.LENGTH_SHORT).show();
                     }
-                } else {
-                    Log.e(TAG,"MY : pos"+pos);
-                    Toast.makeText(context, "돈이 없습니다.", Toast.LENGTH_SHORT).show();
-                }
 
 //                Intent i = new Intent(v.getContext(), CaseDetailActivity.class);
 //                i.putExtra("case_idx", list.get(pos).getCase_idx());
 //                context.startActivity(i);
 
-            }
-        });
+                }
+            });
+        }
+
+
+
 
         viewHolder.txtId.setText(list.get(position).getId());
         viewHolder.txtName.setText(list.get(position).getName());

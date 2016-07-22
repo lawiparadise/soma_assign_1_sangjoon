@@ -22,6 +22,15 @@ public class DTOAll implements Serializable{
 	String friend;
 	String item;
 	String money;
+	String reg_id;
+
+	public String getReg_id() {
+		return reg_id;
+	}
+
+	public void setReg_id(String reg_id) {
+		this.reg_id = reg_id;
+	}
 
 	public String getImg() {
 		return img;

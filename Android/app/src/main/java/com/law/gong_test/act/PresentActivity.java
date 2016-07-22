@@ -21,11 +21,11 @@ public class PresentActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_friend);
+        setContentView(R.layout.activity_present);
 
         Intent intent = getIntent();
         String json = intent.getStringExtra("list");
-        Log.e(TAG, "MY : " + json);
+        Log.e(TAG, "MY : json : " + json);
 
         Gson gson = new Gson();
         DTOArray dtoArray = gson.fromJson(json, DTOArray.class);

@@ -72,6 +72,10 @@
         "source": "D:\\temp\\MyCh6GameMobile12\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\notification_template_part_chronometer.xml"
     },
     {
+        "merged": "D:\\temp\\MyCh6GameMobile12\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_present.xml",
+        "source": "D:\\temp\\MyCh6GameMobile12\\app\\src\\main\\res\\layout\\activity_present.xml"
+    },
+    {
         "merged": "D:\\temp\\MyCh6GameMobile12\\app\\build\\intermediates\\res\\merged\\debug\\layout\\list_friend_item.xml",
         "source": "D:\\temp\\MyCh6GameMobile12\\app\\src\\main\\res\\layout\\list_friend_item.xml"
     },

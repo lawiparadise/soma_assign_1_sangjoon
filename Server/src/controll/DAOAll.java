@@ -30,6 +30,7 @@ public class DAOAll {
 	public static String column11 = "friend";
 	public static String column12 = "item";
 	public static String column13 = "money";
+	public static String column14 = "reg_id";
 	
 	//
 	String url = "jdbc:mysql://localhost/test";
@@ -142,6 +143,7 @@ public class DAOAll {
 				board.setFriend(rs.getString(column11));
 				board.setItem(rs.getString(column12));
 				board.setMoney(rs.getString(column13));
+				board.setReg_id(rs.getString(column14));
 				modelList.add(board);
 			}
 		} catch (SQLException e) {
@@ -237,6 +239,7 @@ public class DAOAll {
 				board.setFriend(rs.getString(column11));
 				board.setItem(rs.getString(column12));
 				board.setMoney(rs.getString(column13));
+				board.setReg_id(rs.getString(column14));
 				modelList.add(board);
 
 			}
