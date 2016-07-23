@@ -25,7 +25,7 @@ import model.DTOAll;
 
 /**
  * Servlet implementation class Main
- **/
+ */
 @WebServlet("/Main")
 public class Main extends HttpServlet {
 	private static final long serialVersionUID = 1L;
