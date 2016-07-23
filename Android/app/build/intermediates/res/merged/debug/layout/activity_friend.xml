@@ -10,6 +10,10 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> aca1389e2a10a53b910b9a8d4bffb80271c446d5
         <ListView
             android:id="@+id/list"
             android:layout_width="fill_parent"

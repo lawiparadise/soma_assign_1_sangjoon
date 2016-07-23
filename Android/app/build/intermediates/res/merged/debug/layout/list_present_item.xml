@@ -16,6 +16,10 @@
         />
 
     <RelativeLayout
+<<<<<<< HEAD
+=======
+        android:id="@+id/layout_up"
+>>>>>>> aca1389e2a10a53b910b9a8d4bffb80271c446d5
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true">
@@ -26,11 +30,19 @@
             android:layout_height="wrap_content"
             android:text="a"
             android:textColor="#00a9e3"
+<<<<<<< HEAD
             android:textSize="20dp" />
 
         <TextView
             android:id="@+id/txt_name"
             android:textSize="20dp"
+=======
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/txt_name"
+            android:textSize="15dp"
+>>>>>>> aca1389e2a10a53b910b9a8d4bffb80271c446d5
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/txt_id"
@@ -41,6 +53,37 @@
     </RelativeLayout>
 
 
+<<<<<<< HEAD
+=======
+    <RelativeLayout
+        android:id="@+id/layout_down"
+        android:layout_below="@id/layout_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/txt_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="a"
+            android:textColor="#00a9e3"
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:id="@+id/txt_money"
+            android:textSize="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/txt_star"
+            android:text="b"
+            android:textColor="#00a9e3"
+
+            />
+    </RelativeLayout>
+
+>>>>>>> aca1389e2a10a53b910b9a8d4bffb80271c446d5
     <Button
         android:id="@+id/btn_add_friend"
         android:layout_width="wrap_content"

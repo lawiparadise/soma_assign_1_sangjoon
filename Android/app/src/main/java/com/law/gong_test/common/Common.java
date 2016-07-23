@@ -19,6 +19,7 @@ import java.util.LinkedHashMap;
  */
 public class Common extends HttpConnect {
 
+<<<<<<< HEAD
 //    public static String BASE_URL = "http://172.16.101.233:8080";
     public static String BASE_URL = "http://192.168.43.6:8080";
     public static final String MAIN_URL = BASE_URL + "/SoMaProject/Main";
@@ -47,6 +48,16 @@ public class Common extends HttpConnect {
     public static ArrayList<Activity> actList = new ArrayList<Activity>();
 
 
+=======
+//        public static String BASE_URL = "http://52.78.4.220";
+//    public static final String MAIN_URL = BASE_URL + "/temp/Main";
+//
+    public static String BASE_URL = "http://192.168.43.6:8080";
+    public static final String MAIN_URL = BASE_URL + "/SoMaProject/Main";
+
+    public static ArrayList<Activity> actList = new ArrayList<Activity>();
+
+>>>>>>> aca1389e2a10a53b910b9a8d4bffb80271c446d5
     //그냥 GET
     public String connect(String url) {
         return getStringFromInputstream(getInputstreamFromUrl(url));

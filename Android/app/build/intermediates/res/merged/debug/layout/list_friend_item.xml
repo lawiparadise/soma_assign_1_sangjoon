@@ -26,11 +26,19 @@
             android:layout_height="wrap_content"
             android:text="a"
             android:textColor="#00a9e3"
+<<<<<<< HEAD
             android:textSize="20dp" />
 
         <TextView
             android:id="@+id/txt_name"
             android:textSize="20dp"
+=======
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/txt_name"
+            android:textSize="15dp"
+>>>>>>> aca1389e2a10a53b910b9a8d4bffb80271c446d5
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/txt_id"
