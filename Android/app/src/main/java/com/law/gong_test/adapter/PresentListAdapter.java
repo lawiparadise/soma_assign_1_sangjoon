@@ -13,12 +13,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.law.gong_test.R;
 import com.law.gong_test.async.MyAsyncCallbackSimple;
 import com.law.gong_test.async.MyAsyncExecutor;
 import com.law.gong_test.common.Common;
 import com.law.gong_test.dto.DTOAll;
+import com.law.gong_test.dto.DTOArray;
 import com.law.gong_test.unity.MainActivity;
 import com.squareup.picasso.Picasso;
 
@@ -60,7 +62,7 @@ public class PresentListAdapter extends BaseAdapter {
             if (MainActivity.id.equals(list.get(i).getId())) {
                 myDTO = list.get(i);
                 myFriendList = list.get(i).getFriend().split(",");
-                Log.e(TAG,"MY : for : "+myFriendList.length);
+                Log.e(TAG, "MY : for : " + myFriendList.length);
                 //별로 좋은 방법은 아님 안됨.
 //                myFriendList = gson.fromJson(list.get(i).getFriend(), String[].class);
 /*                for(int j=0 ; j<myFriendList.length ; j++){
@@ -78,7 +80,7 @@ public class PresentListAdapter extends BaseAdapter {
         }
 
         friendLIst = new ArrayList<>();
-        for(int i=0 ; i<myFriendList.length ; i++){
+        for (int i = 0; i < myFriendList.length; i++) {
             DTOAll dtoAll = new DTOAll();
             dtoAll.setId(myFriendList[i]);
             friendLIst.add(dtoAll);
@@ -117,6 +119,8 @@ public class PresentListAdapter extends BaseAdapter {
             viewHolder.txtName = (TextView) convertView.findViewById(R.id.txt_name);
             viewHolder.btnAdd = (Button) convertView.findViewById(R.id.btn_add_friend);
             viewHolder.imgProfile = (ImageView) convertView.findViewById(R.id.img_profile);
+            viewHolder.txtStar = (TextView) convertView.findViewById(R.id.txt_star);
+            viewHolder.txtMoney = (TextView) convertView.findViewById(R.id.txt_money);
 
             convertView.setTag(viewHolder);
         } else {
@@ -138,7 +142,7 @@ public class PresentListAdapter extends BaseAdapter {
                         Log.e(TAG, "MY : pos" + pos);
                         if (!MainActivity.id.equals(list.get(pos).getId())) {
                             friendId = list.get(pos).getId();
-                            Log.e(TAG, "MY : friendId : "+friendId);
+                            Log.e(TAG, "MY : friendId : " + friendId);
                             new MyAsyncExecutor<String>((Activity) context).setCallable(first).setCallback(firstBack).execute("true");
                         }
                     } else {
@@ -155,10 +159,20 @@ public class PresentListAdapter extends BaseAdapter {
         }
 
 
-
-
         viewHolder.txtId.setText(list.get(position).getId());
         viewHolder.txtName.setText(list.get(position).getName());
+
+        int j=0;
+        String[] str = list.get(position).getItem().split(",");
+        for(int i=0 ; i<str.length ; i++){
+            if(String.valueOf(str[i]).equals("star")){
+                j++;
+            }
+        }
+        viewHolder.txtStar.setText("별 : "+j);
+        j=0;
+
+        viewHolder.txtMoney.setText(list.get(position).getMoney());
 
         //
         Picasso.with(context).load(list.get(position).getImg()).into(viewHolder.imgProfile);
@@ -175,22 +189,26 @@ public class PresentListAdapter extends BaseAdapter {
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("kind", "present");
             jsonObject.addProperty("id", MainActivity.id);
-            jsonObject.addProperty("friend",friendId);
+            jsonObject.addProperty("friend", friendId);
             Log.e(TAG, "MY : friendId in call : " + friendId);
 
             return common.connect(Common.MAIN_URL, jsonObject);
         }
     };
 
-    MyAsyncCallbackSimple<String> firstBack = new MyAsyncCallbackSimple<String>(){
+    MyAsyncCallbackSimple<String> firstBack = new MyAsyncCallbackSimple<String>() {
         @Override
         public void onResult(String result) {
-            if(result.equals("fail")){
+            if (result.equals("fail")) {
                 Toast.makeText(cont, "fail", Toast.LENGTH_SHORT).show();
                 Log.e("callbackSimple", "connect fail");
                 return;
             } else {
                 Toast.makeText(cont, "선물 완료 되었습니다.", Toast.LENGTH_SHORT).show();
+                Gson gson = new Gson();
+                DTOArray dtoArray = gson.fromJson(result, DTOArray.class);
+                list = dtoArray.getList();
+                notifyDataSetChanged();
                 return;
             }
         }
@@ -203,5 +221,8 @@ public class PresentListAdapter extends BaseAdapter {
         Button btnAdd;
         ImageView imgProfile;
         boolean aBoolean;
+
+        TextView txtStar;
+        TextView txtMoney;
     }
 }

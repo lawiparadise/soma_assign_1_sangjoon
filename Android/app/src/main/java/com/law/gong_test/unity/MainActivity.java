@@ -66,8 +66,8 @@ public class MainActivity extends UnityPlayerActivity {
         name = intent.getStringExtra("name");
         id = intent.getStringExtra("id");
 
-//        name = "소희";
-//        id = "26";
+        name = "소희";
+        id = "26";
         img = intent.getStringExtra("img");
 
         Toast.makeText(getApplicationContext(), "Nick : " + name, Toast.LENGTH_SHORT).show();

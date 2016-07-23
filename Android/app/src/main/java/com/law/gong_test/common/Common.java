@@ -19,11 +19,11 @@ import java.util.LinkedHashMap;
  */
 public class Common extends HttpConnect {
 
-        public static String BASE_URL = "http://52.78.4.220";
-    public static final String MAIN_URL = BASE_URL + "/temp/Main";
-
-//    public static String BASE_URL = "http://192.168.43.6:8080";
-//    public static final String MAIN_URL = BASE_URL + "/SoMaProject/Main";
+//        public static String BASE_URL = "http://52.78.4.220";
+//    public static final String MAIN_URL = BASE_URL + "/temp/Main";
+//
+    public static String BASE_URL = "http://192.168.43.6:8080";
+    public static final String MAIN_URL = BASE_URL + "/SoMaProject/Main";
 
     public static ArrayList<Activity> actList = new ArrayList<Activity>();
 

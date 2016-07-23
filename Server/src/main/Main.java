@@ -123,6 +123,7 @@ public class Main extends HttpServlet {
 				dto.setName(dao.getModelList().get(i).getName());
 				dto.setImg(dao.getModelList().get(i).getImg());
 				dto.setFriend(dao.getModelList().get(i).getFriend());
+				dto.setItem(dao.getModelList().get(i).getItem());
 				dto.setMoney(dao.getModelList().get(i).getMoney());
 				dto.setReg_id(dao.getModelList().get(i).getReg_id());
 				list.add(dto);				
@@ -152,7 +153,9 @@ public class Main extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//
-
+		// 요청에 대한 응답 객체
+		PrintWriter out = response.getWriter();
+		
 		DAOAll dao = new DAOAll();
 		dao.dbConn();
 		dao.download();
@@ -225,12 +228,21 @@ public class Main extends HttpServlet {
 
 			for (int i = 0; i < dao.getModelList().size(); i++) {
 				if ((dao.getModelList().get(i).getId()).equals(col2)) {
-
+					String tempMon = dao.getModelList().get(i).getMoney();
+					System.out.println("tempMOn : "+tempMon);
+					
+					int temp = Integer.parseInt(tempMon);
+					Double dou = Double.valueOf(col9).doubleValue();
+					int c = Integer.parseInt(String.valueOf(Math.round(dou)));
+//					System.out.println(c*10);
+					
 					dao.dbConn();
 					dao.update(col2, DAOAll.column6, col6);
 					dao.update(col2, DAOAll.column7, col7);
 					dao.update(col2, DAOAll.column8, col8);
 					dao.update(col2, DAOAll.column9, col9);
+					
+					dao.update(col2, DAOAll.column13, Integer.toString(temp+(c*10)));
 					dao.close();
 
 					break;
@@ -348,6 +360,34 @@ public class Main extends HttpServlet {
 					break;
 				}
 			}
+			
+			dao = new DAOAll();
+			dao.dbConn();
+			dao.download();
+			dao.close();
+			
+			int len = dao.getModelList().size();
+			Gson gson = new Gson();
+//			String[] list = new String[len];
+			ArrayList<DTOAll> list = new ArrayList<>();
+			for(int i=0 ; i<len ; i++){
+//				list[i] = dao.getModelList().get(i).getName();
+				DTOAll dto2 = new DTOAll();
+				dto2.setNum(dao.getModelList().get(i).getNum());
+				dto2.setId(dao.getModelList().get(i).getId());
+				dto2.setName(dao.getModelList().get(i).getName());
+				dto2.setImg(dao.getModelList().get(i).getImg());
+				dto2.setFriend(dao.getModelList().get(i).getFriend());
+				dto2.setItem(dao.getModelList().get(i).getItem());
+				dto2.setMoney(dao.getModelList().get(i).getMoney());
+				dto2.setReg_id(dao.getModelList().get(i).getReg_id());
+				list.add(dto2);				
+			}
+			
+			String json = gson.toJson(list);
+			
+//			System.out.println("{\"list\":"+json+"}");
+			out.println("{\"list\":"+json+"}");
 		}
 		
 		/*
