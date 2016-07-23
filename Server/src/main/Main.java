@@ -153,6 +153,11 @@ public class Main extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//
+		
+		//
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/xml;charset=UTF-8");
+		
 		// 요청에 대한 응답 객체
 		PrintWriter out = response.getWriter();
 		

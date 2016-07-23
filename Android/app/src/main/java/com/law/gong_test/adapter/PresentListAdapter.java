@@ -150,10 +150,6 @@ public class PresentListAdapter extends BaseAdapter {
                         Toast.makeText(context, "돈이 없습니다.", Toast.LENGTH_SHORT).show();
                     }
 
-//                Intent i = new Intent(v.getContext(), CaseDetailActivity.class);
-//                i.putExtra("case_idx", list.get(pos).getCase_idx());
-//                context.startActivity(i);
-
                 }
             });
         }
@@ -162,17 +158,21 @@ public class PresentListAdapter extends BaseAdapter {
         viewHolder.txtId.setText(list.get(position).getId());
         viewHolder.txtName.setText(list.get(position).getName());
 
+
         int j=0;
         String[] str = list.get(position).getItem().split(",");
-        for(int i=0 ; i<str.length ; i++){
-            if(String.valueOf(str[i]).equals("star")){
-                j++;
+        Log.e(TAG, String.valueOf(str));
+        if(!String.valueOf(str).equals("null")){
+            for(int i=0 ; i<str.length ; i++){
+                if(String.valueOf(str[i]).equals("star")){
+                    j++;
+                }
             }
         }
         viewHolder.txtStar.setText("별 : "+j);
-        j=0;
 
         viewHolder.txtMoney.setText(list.get(position).getMoney());
+
 
         //
         Picasso.with(context).load(list.get(position).getImg()).into(viewHolder.imgProfile);
@@ -208,6 +208,9 @@ public class PresentListAdapter extends BaseAdapter {
                 Gson gson = new Gson();
                 DTOArray dtoArray = gson.fromJson(result, DTOArray.class);
                 list = dtoArray.getList();
+                for(int i=0 ; i<dtoArray.getList().size() ; i++){
+                    if(dtoArray.getList().get(i).getId().equals(MainActivity.id)) myDTO = dtoArray.getList().get(i);
+                }
                 notifyDataSetChanged();
                 return;
             }

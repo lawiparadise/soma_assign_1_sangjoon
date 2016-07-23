@@ -14,7 +14,7 @@ import com.law.gong_test.dto.DTOArray;
 
 public class PresentActivity extends Activity {
 
-    public static final String TAG = "FriendActivity";
+    public static final String TAG = "PresentActivity";
 
     int myFriend;
 
