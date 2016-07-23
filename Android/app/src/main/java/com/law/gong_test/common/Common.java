@@ -19,33 +19,13 @@ import java.util.LinkedHashMap;
  */
 public class Common extends HttpConnect {
 
-//    public static String BASE_URL = "http://172.16.101.233:8080";
-    public static String BASE_URL = "http://192.168.43.6:8080";
-    public static final String MAIN_URL = BASE_URL + "/SoMaProject/Main";
+        public static String BASE_URL = "http://52.78.4.220";
+    public static final String MAIN_URL = BASE_URL + "/temp/Main";
 
-
-//    public static String device_id = "102";.
-//    public static String token = "usertoken102";
-
-        public static String device_id = "kids18"; //리스트
-
-//    public static String device_id = "kids21"; //메인
-//    public static String device_id = "kids23"; //예약완료
-//    public static String device_id = "kids17"; //예약 완료
-//    public static String device_id = "kids24"; //예약 완료
-//    public static String device_id = "kids25"; //예약 완료
-//      public static String device_id = "kids26"; //대기중
-//    public static String device_id = "kids27"; //대기중
-//    public static String device_id = "kids28"; //대기중
-//    public static String device_id = "kids29"; //예약완료
-//    public static String device_id = "kids30"; //메인
-
-
-
-    public static String token = "hi";
+//    public static String BASE_URL = "http://192.168.43.6:8080";
+//    public static final String MAIN_URL = BASE_URL + "/SoMaProject/Main";
 
     public static ArrayList<Activity> actList = new ArrayList<Activity>();
-
 
     //그냥 GET
     public String connect(String url) {

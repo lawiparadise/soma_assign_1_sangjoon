@@ -63,11 +63,11 @@ public class MainActivity extends UnityPlayerActivity {
         common = Common.getInstance();
 
         Intent intent = getIntent();
-        name = intent.getStringExtra("Nickname");
+        name = intent.getStringExtra("name");
         id = intent.getStringExtra("id");
 
-        name = "종현";
-        id = "22";
+//        name = "소희";
+//        id = "26";
         img = intent.getStringExtra("img");
 
         Toast.makeText(getApplicationContext(), "Nick : " + name, Toast.LENGTH_SHORT).show();

@@ -293,7 +293,11 @@ public class Main extends HttpServlet {
 				if ((dao.getModelList().get(i).getId()).equals(col11)) {
 					push(dao.getModelList().get(i).getReg_id(), "addFriend", name);
 					System.out.println("push"+dao.getModelList().get(i).getReg_id());
+					break;
 				}
+
+			}
+			for (int i = 0; i < dao.getModelList().size(); i++) {
 				if ((dao.getModelList().get(i).getId()).equals(col2)) {
 					String temp = dao.getModelList().get(i).getFriend();
 					dao.dbConn();
@@ -307,10 +311,13 @@ public class Main extends HttpServlet {
 			String col2 = dto.getId();
 			String col11 = dto.getFriend();
 			
+			System.out.println("col2 : "+col2+", col11 : "+col11);
+			
 			String name = "";
 			for (int i = 0; i < dao.getModelList().size(); i++) {
 				if ((dao.getModelList().get(i).getId()).equals(col2)) {
 					name = dao.getModelList().get(i).getName();
+					System.out.println("name : "+name);
 					break;
 				}
 			}
@@ -318,10 +325,16 @@ public class Main extends HttpServlet {
 			String temp = "";
 			
 			for (int i = 0; i < dao.getModelList().size(); i++) {
+				System.out.println("for"+i);
 				if ((dao.getModelList().get(i).getId()).equals(col11)) {
 					push(dao.getModelList().get(i).getReg_id(), "present", name);
 					temp = dao.getModelList().get(i).getItem();
+					System.out.println("if equls col 11"+name);
+					break;
 				}
+
+			}
+			for (int i = 0; i < dao.getModelList().size(); i++) {
 				if ((dao.getModelList().get(i).getId()).equals(col2)) {
 					
 					String tempMon = dao.getModelList().get(i).getMoney();

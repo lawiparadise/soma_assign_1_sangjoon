@@ -138,6 +138,7 @@ public class PresentListAdapter extends BaseAdapter {
                         Log.e(TAG, "MY : pos" + pos);
                         if (!MainActivity.id.equals(list.get(pos).getId())) {
                             friendId = list.get(pos).getId();
+                            Log.e(TAG, "MY : friendId : "+friendId);
                             new MyAsyncExecutor<String>((Activity) context).setCallable(first).setCallback(firstBack).execute("true");
                         }
                     } else {
@@ -175,6 +176,7 @@ public class PresentListAdapter extends BaseAdapter {
             jsonObject.addProperty("kind", "present");
             jsonObject.addProperty("id", MainActivity.id);
             jsonObject.addProperty("friend",friendId);
+            Log.e(TAG, "MY : friendId in call : " + friendId);
 
             return common.connect(Common.MAIN_URL, jsonObject);
         }
