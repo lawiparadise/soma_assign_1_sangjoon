@@ -43,6 +43,7 @@ Software Maestro의 첫 번째 과제입니다.
 3. 페이스북, 트위터, 이메일등 타 서비스 연계가 1개이상 되어야 함.
  - <img src="http://52.78.4.220/kakao.jpg" width="200" height="200"></img>
 4. 앱스토어에 업로드 되어야함.
+ - https://play.google.com/store/apps/details?id=com.law.gong_test
  - ![mysql](http://52.78.4.220/app.png)
 5. 서버 프로그램이 클라우드나 호스팅이 되는 서버에 배포가 되어야함.
  - ![mysql](http://52.78.4.220/aws.png)
