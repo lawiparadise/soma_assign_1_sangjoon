@@ -29,7 +29,7 @@ Software Maestro의 첫 번째 과제입니다.
 2.mysql
  - 버전 : 14.14 Distrib 5.5.50
  - 환경 : 우분투14.04 LTS (AWS)
- - 위치 : 
+ - 위치 : mysql
 
 
 
@@ -67,5 +67,5 @@ Software Maestro의 첫 번째 과제입니다.
  - <img src="http://52.78.4.220/push2.jpg" width="300" height="500"></img>
 5. 안드로이드와 아이폰 둘다 대응시 가점.
 6. DB와 연동되는 별도의 CMS(관리시스템)을 구축시 가점.
-
+ - http://52.78.4.220/temp/Select
 
