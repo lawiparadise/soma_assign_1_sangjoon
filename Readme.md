@@ -56,9 +56,9 @@ Software Maestro의 첫 번째 과제입니다.
 1. 클라우드 이용시 가점.
  - ![mysql](http://52.78.4.220/aws.png)
 2. 친구추가, 랭킹, 선물하기등의 기능 추가시 가점.(랭킹따로, 친구추가선물하기는 따로)
- - <img src="http://52.78.4.220/friend_list.png" width="300" height="300"></img>
- - <img src="http://52.78.4.220/rank.jpg" width="300" height="300"></img>
- - <img src="http://52.78.4.220/present.png" width="300" height="300"></img>
+ - <img src="http://52.78.4.220/friend_list.png" width="500" height="300"></img>
+ - <img src="http://52.78.4.220/rank.jpg" width="500" height="300"></img>
+ - <img src="http://52.78.4.220/present.png" width="500" height="300"></img>
 3. Restful API 형태 설계 적용시 가점.
  - ![mysql](http://52.78.4.220/rest.png)
 4. push 구현 되었으면 가점.
